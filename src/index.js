@@ -15,16 +15,18 @@ function mergeCells() {
 
     let mergePreviousCell = false
     let mergesCount = 0
+    let lastMergedCell = null
     cells.forEach((cell, cellIndex) => {
       if (cell.classList.contains('selected')) {
         mergesCount += getCellColspan(cell)
 
         if (mergePreviousCell) {
-          cells[cellIndex-1].setAttribute("colspan", mergesCount)
+          lastMergedCell = lastMergedCell || cells[cellIndex-1]
+          lastMergedCell.setAttribute("colspan", mergesCount)
           cell.remove()
-        } else {
-          mergePreviousCell = true
         }
+
+        mergePreviousCell = true
       } else {
         mergePreviousCell = false
       }
