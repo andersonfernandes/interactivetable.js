@@ -3,16 +3,47 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
-const selectedCellsView = document.querySelector('.selected-cells')
+function getCellColspan(cell) {
+  return parseInt(cell.getAttribute('colspan')) || 1
+}
 
-document.querySelectorAll(".interactive-table td").forEach((element, _) => {
-  element.querySelector('.cell').addEventListener("change", () => {
-    element.classList.toggle("selected")
+function mergeCells() {
+  let rows = document.querySelectorAll(".interactive-table tr:not(.hidden)")
 
-    let selectedCells = Array.from(document.querySelectorAll(".interactive-table .selected"))
+  rows.forEach((row, rowIndex) => {
+    let cells = Array.from(row.querySelectorAll("td"))
 
-    selectedCellsView.innerHTML = selectedCells.map((cellElement) =>{
-      return cellElement.textContent
+    let mergePreviousCell = false
+    let mergesCount = 0
+    cells.forEach((cell, cellIndex) => {
+      if (cell.classList.contains('selected')) {
+        mergesCount += getCellColspan(cell)
+
+        if (mergePreviousCell) {
+          cells[cellIndex-1].setAttribute("colspan", mergesCount)
+          cell.remove()
+        } else {
+          mergePreviousCell = true
+        }
+      } else {
+        mergePreviousCell = false
+      }
+
+      cell.classList.remove('selected')
+      cell.querySelector('.cell-checkbox').checked = false
     })
   })
+
+}
+
+document.querySelectorAll(".interactive-table td").forEach((element, _) => {
+  if(element.querySelector('.cell-checkbox') === null) return
+
+  element.querySelector('.cell-checkbox').addEventListener("change", () => {
+    element.classList.toggle("selected")
+  })
+})
+
+document.querySelector(".merge-button").addEventListener('click', () => {
+  mergeCells()
 })

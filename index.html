@@ -8,13 +8,19 @@
     <div class="container">
       <h1>Interactive Table</h1>
 
-      <form action="#" method="post">
+      <a class="btn btn-primary merge-button" href="javascript:void(0)">Merge Cells</a>
 
+      <form action="#" method="post">
         <table class="table table-bordered interactive-table">
           <tbody>
+            <tr class="hidden">
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
             <tr>
               <td>
-                <input class="cell" type="checkbox">
+                <input class="cell-checkbox" type="checkbox">
 
                 <label>Cell 0-0</label>
                 <select>
@@ -24,7 +30,7 @@
               </td>
 
               <td>
-                <input class="cell" type="checkbox">
+                <input class="cell-checkbox" type="checkbox">
 
                 <label>Cell 0-1</label>
                 <select>
@@ -33,7 +39,7 @@
                 </select>  
               </td>
               <td>
-                <input class="cell" type="checkbox">
+                <input class="cell-checkbox" type="checkbox">
 
                 <label>Cell 0-2</label>
                 <select>
@@ -45,7 +51,7 @@
 
             <tr>
               <td>
-                <input class="cell" type="checkbox">
+                <input class="cell-checkbox" type="checkbox">
 
                 <label>Cell 1-0</label>
                 <select>
@@ -55,7 +61,7 @@
               </td>
 
               <td>
-                <input class="cell" type="checkbox">
+                <input class="cell-checkbox" type="checkbox">
 
                 <label>Cell 1-1</label>
                 <select>
@@ -64,7 +70,7 @@
                 </select>  
               </td>
               <td>
-                <input class="cell" type="checkbox">
+                <input class="cell-checkbox" type="checkbox">
 
                 <label>Cell 1-2</label>
                 <select>
@@ -76,7 +82,7 @@
 
             <tr>
               <td>
-                <input class="cell" type="checkbox">
+                <input class="cell-checkbox" type="checkbox">
 
                 <label>Cell 2-0</label>
                 <select>
@@ -86,7 +92,7 @@
               </td>
 
               <td>
-                <input class="cell" type="checkbox">
+                <input class="cell-checkbox" type="checkbox">
 
                 <label>Cell 2-1</label>
                 <select>
@@ -95,7 +101,7 @@
                 </select>  
               </td>
               <td>
-                <input class="cell" type="checkbox">
+                <input class="cell-checkbox" type="checkbox">
 
                 <label>Cell 2-2</label>
                 <select>
@@ -108,8 +114,6 @@
         </table>
       </form>
     </div>
-
-    <div class="selected-cells"></div>
 
     <script src="dist/main.js"></script>
   </body>
