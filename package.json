@@ -1,0 +1,16 @@
+{
+  "name": "interactivetable.js",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "git@github.com:andersonfernandes/interactivetable.js.git",
+  "author": "Anderson Fernandes <fernandesanderson14@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx webpack --watch --progress --config webpack.config.js"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {}
+}
